@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import UserComponent from './component/UserComponent';
 import GoogleSignIn from './GoogleSignIn';
 import User from './model/User';
 
@@ -40,7 +41,7 @@ export default class App extends React.Component<Props, State> {
   render() {
     return (
       <div className="App">
-        {this.state.user !== undefined && <div>hello</div>}
+        {this.state.user !== undefined && <UserComponent user={this.state.user} />}
         <GoogleSignIn loginSuccessCallback={(response: any) => this.loginSuccess(response)} loginFailureCallback={(response: any) => this.loginFailure(response)} />
       </div>
     );

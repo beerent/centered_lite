@@ -3,12 +3,12 @@ import GoogleLogin from "react-google-login";
 
 const CLIENT_ID = process.env.REACT_APP_FIREBASE_AUTH_CLIENT_ID || '';
 
-interface GoogleSignInProps {
+interface Props {
     loginSuccessCallback: Function;
     loginFailureCallback: Function;
 }
 
-export default class GoogleSignIn extends React.Component <GoogleSignInProps> {
+export default class GoogleSignIn extends React.Component <Props> {
     render() {
         return (
             <div>
