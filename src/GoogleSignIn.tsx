@@ -9,11 +9,6 @@ interface GoogleSignInProps {
 }
 
 export default class GoogleSignIn extends React.Component <GoogleSignInProps> {
-    constructor (props: GoogleSignInProps)
-    {
-        super(props);
-    }
-
     render() {
         return (
             <div>
