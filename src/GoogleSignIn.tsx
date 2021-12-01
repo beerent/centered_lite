@@ -1,7 +1,7 @@
 import React from "react";
 import GoogleLogin from "react-google-login";
 
-const CLIENT_ID = "408045834999-rohbos8asm7qrsc6ts680katehfi5phi.apps.googleusercontent.com";
+const CLIENT_ID = process.env.REACT_APP_FIREBASE_AUTH_CLIENT_ID || '';
 
 interface GoogleSignInProps {
     loginSuccessCallback: Function;
