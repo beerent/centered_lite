@@ -42,7 +42,7 @@ export default class App extends React.Component<Props, State> {
     return (
       <div className="App">
         {this.state.user !== undefined && <UserComponent user={this.state.user} />}
-        <GoogleSignIn loginSuccessCallback={(response: any) => this.loginSuccess(response)} loginFailureCallback={(response: any) => this.loginFailure(response)} />
+        {this.state.user === undefined && <GoogleSignIn loginSuccessCallback={(response: any) => this.loginSuccess(response)} loginFailureCallback={(response: any) => this.loginFailure(response)} />}
       </div>
     );
   }
