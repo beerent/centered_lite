@@ -1,6 +1,6 @@
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 import React from 'react';
-import './App.css';
-import UserComponent from './component/UserComponent';
+import UserProfileComponent from './component/UserProfileComponent';
 import GoogleSignIn from './GoogleSignIn';
 import User from './model/User';
 
@@ -11,6 +11,8 @@ interface Props {
 interface State {
   user? : User;
 }
+
+const theme = createTheme();
 
 export default class App extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -31,6 +33,11 @@ export default class App extends React.Component<Props, State> {
     console.log(response);
   }
 
+  onLogout() {
+    this.setState({user: undefined});
+    alert("You have successfully logged out.");
+  }
+
   createUserFromLoginResponse(response: any) : User {
     const profileObj = response.profileObj;
     const user: User = new User(profileObj.givenName, profileObj.familyName, profileObj.email, profileObj.imageUrl);
@@ -40,10 +47,12 @@ export default class App extends React.Component<Props, State> {
 
   render() {
     return (
-      <div className="App">
-        {this.state.user !== undefined && <UserComponent user={this.state.user} />}
-        {this.state.user === undefined && <GoogleSignIn loginSuccessCallback={(response: any) => this.loginSuccess(response)} loginFailureCallback={(response: any) => this.loginFailure(response)} />}
-      </div>
+      <ThemeProvider theme={theme}>
+        <div className="App">
+          {this.state.user !== undefined && <UserProfileComponent onLogout={() => this.onLogout()} user={this.state.user} />}
+          {this.state.user === undefined && <GoogleSignIn loginSuccessCallback={(response: any) => this.loginSuccess(response)} loginFailureCallback={(response: any) => this.loginFailure(response)} />}
+        </div>
+      </ThemeProvider>
     );
   }
 }
