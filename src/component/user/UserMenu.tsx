@@ -10,10 +10,6 @@ interface Props {
 }
 
 export default class UserMenu extends React.Component<Props> {
-    constructor(props: Props) {
-        super(props);
-    }
-
     render() {
         return (
             <React.Fragment>
