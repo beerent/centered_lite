@@ -1,7 +1,7 @@
-import { Card, CardContent, CardMedia, Typography} from "@mui/material";
+import { Card, CardContent, CardMedia} from "@mui/material";
+import User from "src/model/User";
 import React from "react";
 import ReactDOM from "react-dom";
-import User from "../model/User";
 
 interface Props {
     user: User,
@@ -9,7 +9,7 @@ interface Props {
     onPhotoLostFocus: Function,
 }
 
-export default class UserPhotoComponent extends React.Component <Props> {
+export default class UserPhoto extends React.Component <Props> {
     wrapperRef: any;
 
     constructor(props : Props) {

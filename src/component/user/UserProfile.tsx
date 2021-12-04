@@ -1,8 +1,8 @@
 import { Grid } from "@mui/material";
 import React from "react";
-import User from "../model/User";
-import ProfileMenu from "./ProfileMenu";
-import UserPhotoComponent from "./UserPhotoComponent";
+import User from "src/model/User";
+import ProfileMenu from "./UserMenu";
+import UserPhotoComponent from "./UserPhoto";
 
 interface Props {
     user: User,
@@ -13,7 +13,7 @@ interface State {
     elementToDisplayMenu: HTMLElement | null
 }
 
-export default class UserProfileComponent extends React.Component<Props, State> {
+export default class UserProfile extends React.Component<Props, State> {
     constructor(props: Props) {
         super(props);
 

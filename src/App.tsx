@@ -1,9 +1,8 @@
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import GoogleSignIn from 'src/component/auth/GoogleSignIn';
+import UserProfile from 'src/component/user/UserProfile';
+import User from 'src/model/User';
 import React from 'react';
-import ProfileMenu from './component/ProfileMenu';
-import UserProfileComponent from './component/UserProfileComponent';
-import GoogleSignIn from './GoogleSignIn';
-import User from './model/User';
 
 interface Props {
 
@@ -50,7 +49,7 @@ export default class App extends React.Component<Props, State> {
     return (
       <ThemeProvider theme={theme}>
         <div className="App">
-          {this.state.user !== undefined && <UserProfileComponent onLogout={() => this.onLogout()} user={this.state.user} />}
+          {this.state.user !== undefined && <UserProfile onLogout={() => this.onLogout()} user={this.state.user} />}
           {this.state.user === undefined && <GoogleSignIn loginSuccessCallback={(response: any) => this.loginSuccess(response)} loginFailureCallback={(response: any) => this.loginFailure(response)} />}
         </div>
       </ThemeProvider>
