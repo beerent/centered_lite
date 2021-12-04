@@ -1,5 +1,6 @@
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import React from 'react';
+import ProfileMenu from './component/ProfileMenu';
 import UserProfileComponent from './component/UserProfileComponent';
 import GoogleSignIn from './GoogleSignIn';
 import User from './model/User';
