@@ -9,24 +9,19 @@ interface Props {
     onLogout: Function
 }
 
-export default class UserMenu extends React.Component<Props> {
-    render() {
-        return (
-            <React.Fragment>
-                <Menu
-                    anchorEl={this.props.elementToAnchorMenu}
-                    open={this.props.elementToAnchorMenu !== null}
-                    transformOrigin={{ horizontal: 'right', vertical: 'top' }}
-                    anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
-                >
-                    <MenuItem onClick={ () => this.props.onLogout() } >
-                        <ListItemIcon>
-                            <Logout fontSize="small" />
-                        </ListItemIcon>
-                        Logout
-                    </MenuItem>
-                </Menu>
-            </React.Fragment>
-        );
-    }
-}
+export const UserMenu = ({ elementToAnchorMenu, onLogout }: Props) =>
+    <React.Fragment>
+        <Menu
+            anchorEl={elementToAnchorMenu}
+            open={elementToAnchorMenu !== null}
+            transformOrigin={{ horizontal: 'right', vertical: 'top' }}
+            anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
+        >
+            <MenuItem onClick={() => onLogout()} >
+                <ListItemIcon>
+                    <Logout fontSize="small" />
+                </ListItemIcon>
+                Logout
+            </MenuItem>
+        </Menu>
+    </React.Fragment>

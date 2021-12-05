@@ -1,8 +1,8 @@
 import { Grid } from "@mui/material";
 import React from "react";
 import User from "src/model/User";
-import ProfileMenu from "./UserMenu";
-import UserPhotoComponent from "./UserPhoto";
+import { UserMenu } from "./UserMenu";
+import { UserPhoto } from "./UserPhoto";
 
 interface Props {
     user: User,
@@ -23,6 +23,10 @@ export default class UserProfile extends React.Component<Props, State> {
     }
 
     onProfileClicked(profileHtmlElement: HTMLElement) {
+        if (profileHtmlElement == null) {
+            return;
+        }
+        
         this.setState({
             elementToDisplayMenu : profileHtmlElement,
         });
@@ -35,19 +39,17 @@ export default class UserProfile extends React.Component<Props, State> {
     }
 
     render() {
-        document.addEventListener("click", () => this.onProfileClose, false);
-
         return (
             <div>
                 <Grid container justifyContent="flex-end">
-                    <UserPhotoComponent 
+                    <UserPhoto
                         user={this.props.user} 
                         onPhotoClick={(h: HTMLElement) => this.onProfileClicked(h)}
                         onPhotoLostFocus={() => this.onProfileClose()}
                     />
                 </Grid>
                 <Grid container justifyContent="flex-end">
-                    <ProfileMenu elementToAnchorMenu={this.state.elementToDisplayMenu} onLogout={this.props.onLogout} />
+                    <UserMenu elementToAnchorMenu={this.state.elementToDisplayMenu} onLogout={this.props.onLogout} />
                 </Grid>
             </div>
         );

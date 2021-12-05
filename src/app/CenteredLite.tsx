@@ -1,5 +1,5 @@
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import GoogleSignIn from 'src/component/auth/GoogleSignIn';
+import { GoogleSignIn } from 'src/component/auth/GoogleSignIn';
 import UserProfile from 'src/component/user/UserProfile';
 import User from 'src/model/User';
 import React from 'react';

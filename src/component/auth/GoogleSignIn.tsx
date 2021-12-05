@@ -8,24 +8,19 @@ interface Props {
     loginFailureCallback: Function;
 }
 
-export default class GoogleSignIn extends React.Component<Props> {
-    render() {
-        return (
-            <div>
-                <GoogleLogin
-                    buttonText='Login With Google'
-                    onSuccess={(response: any) => {
-                        this.props.loginSuccessCallback(response)
-                    }}
-                    onFailure={(response: any) => {
-                        this.props.loginFailureCallback(response)
-                    }}
+export const GoogleSignIn = ({ loginSuccessCallback, loginFailureCallback }: Props) => 
+    <div>
+        <GoogleLogin
+            buttonText='Login With Google'
+            onSuccess={(response: any) => {
+                loginSuccessCallback(response)
+            }}
+            onFailure={(response: any) => {
+                loginFailureCallback(response)
+            }}
 
-                    clientId={CLIENT_ID}
-                    cookiePolicy={'single_host_origin'}
-                    responseType='code,token'
-                />
-            </div>
-        );
-    }
-}
+            clientId={CLIENT_ID}
+            cookiePolicy={'single_host_origin'}
+            responseType='code,token'
+        />
+    </div>
