@@ -1,4 +1,7 @@
 {
     "typescript.preferences.importModuleSpecifier": "non-relative",
-    "javascript.preferences.importModuleSpecifier": "non-relative"
+    "javascript.preferences.importModuleSpecifier": "non-relative",
+    "[javascript]": {
+        "editor.tabSize": 4
+    }
 }

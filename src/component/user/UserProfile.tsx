@@ -1,5 +1,5 @@
 import { Grid } from "@mui/material";
-import React from "react";
+import { useState } from "react";
 import User from "src/model/User";
 import { UserMenu } from "./UserMenu";
 import { UserPhoto } from "./UserPhoto";
@@ -9,49 +9,33 @@ interface Props {
     onLogout: Function,
 }
 
-interface State {
-    elementToDisplayMenu: HTMLElement | null
-}
+export const UserProfile = ({ user, onLogout }: Props) => {
+    const [elementToDisplayMenu, setElementToDisplayMenu] = useState<HTMLElement | null>(null);
 
-export default class UserProfile extends React.Component<Props, State> {
-    constructor(props: Props) {
-        super(props);
-
-        this.state = {
-            elementToDisplayMenu: null
-        }
-    }
-
-    onProfileClicked(profileHtmlElement: HTMLElement) {
-        if (profileHtmlElement == null) {
+    const onProfileClicked = (profileHtmlElement: HTMLElement) => {
+        if (!profileHtmlElement) {
             return;
         }
-        
-        this.setState({
-            elementToDisplayMenu : profileHtmlElement,
-        });
+
+        setElementToDisplayMenu(profileHtmlElement);
     }
 
-    onProfileClose() {
-        this.setState({
-            elementToDisplayMenu : null,
-        });
+    const onProfileClosed = () => {
+        setElementToDisplayMenu(null);
     }
 
-    render() {
-        return (
-            <div>
-                <Grid container justifyContent="flex-end">
-                    <UserPhoto
-                        user={this.props.user} 
-                        onPhotoClick={(h: HTMLElement) => this.onProfileClicked(h)}
-                        onPhotoLostFocus={() => this.onProfileClose()}
-                    />
-                </Grid>
-                <Grid container justifyContent="flex-end">
-                    <UserMenu elementToAnchorMenu={this.state.elementToDisplayMenu} onLogout={this.props.onLogout} />
-                </Grid>
-            </div>
-        );
-    }
+    return (
+        <div>
+            <Grid container justifyContent="flex-end">
+                <UserPhoto
+                    user={user}
+                    onPhotoClick={(h: HTMLElement) => onProfileClicked(h)}
+                    onPhotoLostFocus={() => onProfileClosed()}
+                />
+            </Grid>
+            <Grid container justifyContent="flex-end">
+                <UserMenu elementToAnchorMenu={elementToDisplayMenu} onLogout={onLogout} />
+            </Grid>
+        </div>
+    )
 }

@@ -1,22 +1,21 @@
-import React from "react";
 import GoogleLogin from "react-google-login";
 
 const CLIENT_ID = process.env.REACT_APP_FIREBASE_AUTH_CLIENT_ID || '';
 
 interface Props {
-    loginSuccessCallback: Function;
-    loginFailureCallback: Function;
+    onLoginSuccess: Function;
+    onLoginFailure: Function;
 }
 
-export const GoogleSignIn = ({ loginSuccessCallback, loginFailureCallback }: Props) => 
+export const GoogleSignIn = ({ onLoginSuccess, onLoginFailure }: Props) => 
     <div>
         <GoogleLogin
             buttonText='Login With Google'
             onSuccess={(response: any) => {
-                loginSuccessCallback(response)
+                onLoginSuccess(response)
             }}
             onFailure={(response: any) => {
-                loginFailureCallback(response)
+                onLoginFailure(response)
             }}
 
             clientId={CLIENT_ID}
