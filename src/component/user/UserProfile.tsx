@@ -10,18 +10,18 @@ interface Props {
 }
 
 export const UserProfile = ({ user, onLogout }: Props) => {
-    const [elementToDisplayMenu, setElementToDisplayMenu] = useState<HTMLElement | null>(null);
+    const [elementToAnchorMenu, setElementToAnchorMenu] = useState<HTMLElement | null>(null);
 
-    const onProfileClicked = (profileHtmlElement: HTMLElement) => {
+    const onProfileOpened = (profileHtmlElement: HTMLElement) => {
         if (!profileHtmlElement) {
             return;
         }
 
-        setElementToDisplayMenu(profileHtmlElement);
+        setElementToAnchorMenu(profileHtmlElement);
     }
 
     const onProfileClosed = () => {
-        setElementToDisplayMenu(null);
+        setElementToAnchorMenu(null);
     }
 
     return (
@@ -29,12 +29,12 @@ export const UserProfile = ({ user, onLogout }: Props) => {
             <Grid container justifyContent="flex-end">
                 <UserPhoto
                     user={user}
-                    onPhotoClick={(h: HTMLElement) => onProfileClicked(h)}
+                    onPhotoClick={(h: HTMLElement) => onProfileOpened(h)}
                     onPhotoLostFocus={() => onProfileClosed()}
                 />
             </Grid>
             <Grid container justifyContent="flex-end">
-                <UserMenu elementToAnchorMenu={elementToDisplayMenu} onLogout={onLogout} />
+                <UserMenu elementToAnchorMenu={elementToAnchorMenu} onLogout={onLogout} />
             </Grid>
         </div>
     )
