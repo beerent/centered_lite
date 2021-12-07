@@ -1,15 +1,13 @@
 import { Grid } from "@mui/material";
 import { useState } from "react";
-import User from "src/model/User";
 import { UserMenu } from "./UserMenu";
 import { UserPhoto } from "./UserPhoto";
 
 interface Props {
-    user: User,
     onLogout: Function,
 }
 
-export const UserProfile = ({ user, onLogout }: Props) => {
+export const UserProfile = ({ onLogout }: Props) => {
     const [elementToAnchorMenu, setElementToAnchorMenu] = useState<HTMLElement | null>(null);
 
     const onProfileOpened = (profileHtmlElement: HTMLElement) => {
@@ -28,7 +26,6 @@ export const UserProfile = ({ user, onLogout }: Props) => {
         <div>
             <Grid container justifyContent="flex-end">
                 <UserPhoto
-                    user={user}
                     onPhotoClick={(h: HTMLElement) => onProfileOpened(h)}
                     onPhotoLostFocus={() => onProfileClosed()}
                 />
