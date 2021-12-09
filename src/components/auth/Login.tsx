@@ -18,7 +18,7 @@ export const Login = () => {
         const user = createUserFromLoginResponse(response);
         dispatch(setUser(user));
 
-        navigate("/");
+        navigate("/home");
     }
 
     const onLoginFailure = (response: any) => {
