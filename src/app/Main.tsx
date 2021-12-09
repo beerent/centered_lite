@@ -1,13 +1,18 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { App } from "src/app/App";
-import { Login } from "src/routes/login/Login";
+import { useAppSelector } from "src/redux/Hooks";
+import { userIsSet } from "src/redux/user/UserSlice";
+import { Login } from "src/components/auth/Login";
 
 export const Main = () => {
+    const userIsLoggedIn : boolean = useAppSelector(userIsSet);
+    
     return (
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<App />} />
-                <Route path="login" element={<Login />} />
+                {!userIsLoggedIn && <Route path="login" element={<Login />} />}
+                <Route path="*" element={<Navigate to="/" />} />
             </Routes>
         </BrowserRouter>
     );

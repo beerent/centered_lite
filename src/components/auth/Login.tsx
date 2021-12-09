@@ -1,11 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import { GoogleSignIn } from "src/components/auth/GoogleSignIn";
-import { Home } from "src/components/home/Home";
-import { useAppDispatch, useAppSelector } from "src/redux/Hooks";
-import { createUserObject, setUser, userIsSet } from "src/redux/user/UserSlice";
+import { useAppDispatch } from "src/redux/Hooks";
+import { createUserObject, setUser } from "src/redux/user/UserSlice";
 
 export const Login = () => {
-
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
 
@@ -25,11 +23,6 @@ export const Login = () => {
 
     const onLoginFailure = (response: any) => {
         alert("failed to login.");
-    }
-
-    const userIsLoggedIn : boolean = useAppSelector(userIsSet);
-    if (userIsLoggedIn) {
-        return <Home />
     }
 
     return (

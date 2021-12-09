@@ -12,6 +12,7 @@ export const Home = () => {
 
     return (
         <div>
+            home page !
             <UserProfile onLogout={() => onLogout()} />
         </div>
     )
