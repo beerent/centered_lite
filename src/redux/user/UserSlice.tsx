@@ -38,10 +38,10 @@ export const UserSlice = createSlice({
 
 export const getUser = (state: RootState) => {
     return {
-        firstName: state.UserSlice.firstName,
-        lastName: state.UserSlice.lastName,
-        email: state.UserSlice.email,
-        profileUrl: state.UserSlice.profileUrl,
+        firstName: state.user.firstName,
+        lastName: state.user.lastName,
+        email: state.user.email,
+        profileUrl: state.user.profileUrl,
     }
 };
 
