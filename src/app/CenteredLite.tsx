@@ -1,28 +1,42 @@
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useAppSelector } from 'src/redux/Hooks';
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { userIsSet } from 'src/redux/user/UserSlice';
-import { Paper } from '@mui/material';
-import { Home } from 'src/components/home/Home';
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
+import { Header } from 'src/components/common/Header';
+import { Intro } from 'src/components/login/Intro';
+import { Padding } from 'src/components/util/Padding';
+import { Button, Grid } from '@mui/material';
 
 export const CenteredLite = () => {
     const theme = createTheme();
     const navigate = useNavigate();
-    
-    const userIsLoggedIn : boolean = useAppSelector(userIsSet);
+
+    const userIsLoggedIn: boolean = useAppSelector(userIsSet);
 
     useEffect(() => {
         if (userIsLoggedIn) {
             navigate("/home");
-        }    
+        }
     })
 
     return (
         <ThemeProvider theme={theme}>
-            <Paper >
-                <Link to="/login">Login</Link>
-            </Paper>
+            <React.Fragment>
+                <Header />
+                <Padding height={"3vh"} />
+                <Intro />
+                <Padding height={"20vh"} />
+
+                <Grid container spacing={2}>
+                    <Grid item xs={5}></Grid>
+                    <Grid item xs={1}>
+                        <Button variant="contained">Login</Button>
+                    </Grid>
+                </Grid>
+
+
+            </React.Fragment>
         </ThemeProvider>
     )
 }

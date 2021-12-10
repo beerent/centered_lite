@@ -1,9 +1,9 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { useAppSelector } from "src/redux/Hooks";
 import { userIsSet } from "src/redux/user/UserSlice";
-import { Login } from "src/components/auth/Login";
 import { CenteredLite } from "src/app/CenteredLite";
 import { Home } from "src/components/home/Home";
+import { Login } from "src/components/login/Login";
 
 export const Main = () => {
     const userIsLoggedIn : boolean = useAppSelector(userIsSet);

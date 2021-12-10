@@ -1,3 +1,4 @@
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import { GoogleSignIn } from "src/components/auth/GoogleSignIn";
 import { useAppDispatch } from "src/redux/Hooks";
@@ -26,6 +27,8 @@ export const Login = () => {
     }
 
     return (
-        <GoogleSignIn onLoginSuccess={(response: any) => onLoginSuccess(response)} onLoginFailure={(response: any) => onLoginFailure(response)} />
+        <React.Fragment>
+            <GoogleSignIn onLoginSuccess={(response: any) => onLoginSuccess(response)} onLoginFailure={(response: any) => onLoginFailure(response)} />
+        </React.Fragment>
     )
 };
